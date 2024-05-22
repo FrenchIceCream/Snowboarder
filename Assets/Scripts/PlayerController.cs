@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
         surfaceEffector2D = FindObjectOfType<SurfaceEffector2D>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (canMove)
         {

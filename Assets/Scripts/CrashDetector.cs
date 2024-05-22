@@ -11,14 +11,14 @@ public class CrashDetector : MonoBehaviour
     [SerializeField] AudioClip crashSound;
     bool hasCrashed = false;
 
-    void OnTriggerEnter2D(Collider2D collider)
+    void OnCollisionEnter2D(Collision2D collision2D)
     {
-        if (collider.CompareTag("Ground") && !hasCrashed)
+        if (collision2D.collider.CompareTag("Ground") && !hasCrashed)
         {
             hasCrashed = true;
             crashEffect.Play();
-            GetComponent<AudioSource>().PlayOneShot(crashSound, 0.5f);
-            GetComponent<PlayerController>().DisableControls();
+            GetComponentInParent<AudioSource>().PlayOneShot(crashSound, 0.5f);
+            GetComponentInParent<PlayerController>().DisableControls();
             Invoke("ReloadScene", delay);
         }
     }
