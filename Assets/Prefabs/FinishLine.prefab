@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c1e38630fff25245a66c54926a88aa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 5
+  delay: 2
   finishEffect: {fileID: 5874940467526975963}
 --- !u!61 &4446117655540433593
 BoxCollider2D:
