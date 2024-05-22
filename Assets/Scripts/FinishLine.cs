@@ -13,7 +13,8 @@ public class FinishLine : MonoBehaviour
         if (other.gameObject.name == "Player")
         {
             finishEffect.Play();
-            GetComponent<AudioSource>().Play(); //триггерим один раз, поэтому можно и тут
+            GetComponent<AudioSource>().Play();
+            FindFirstObjectByType<TimerSaver>().StopTimer(SceneManager.GetActiveScene().buildIndex - 2);
             Invoke("LoadNextScene", delay);
         }
     }
