@@ -9,13 +9,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float baseSpeed = 1f;
     [SerializeField] float boostSpeed = 1f;
     Rigidbody2D rb;
-    SurfaceEffector2D surfaceEffector2D;
+    SurfaceEffector2D[] surfaceEffector2D;
     bool canMove = true;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        surfaceEffector2D = FindObjectOfType<SurfaceEffector2D>();
+        surfaceEffector2D = FindObjectsByType<SurfaceEffector2D>(FindObjectsSortMode.None);
     }
 
     void FixedUpdate()
@@ -31,9 +31,14 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            surfaceEffector2D.speed = boostSpeed;
+            foreach (SurfaceEffector2D effector in surfaceEffector2D)
+                effector.speed = boostSpeed;
         }
-        else surfaceEffector2D.speed = baseSpeed;
+        else 
+        {
+            foreach (SurfaceEffector2D effector in surfaceEffector2D)
+                effector.speed = baseSpeed;
+        }
     }
 
     void RotatePlayer()

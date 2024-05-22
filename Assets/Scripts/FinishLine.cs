@@ -14,12 +14,12 @@ public class FinishLine : MonoBehaviour
         {
             finishEffect.Play();
             GetComponent<AudioSource>().Play(); //триггерим один раз, поэтому можно и тут
-            Invoke("ReloadScene", delay);
+            Invoke("LoadNextScene", delay);
         }
     }
 
-    void ReloadScene()
+    void LoadNextScene()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
