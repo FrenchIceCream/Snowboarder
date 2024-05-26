@@ -15,9 +15,9 @@ public class SetTimerUI : MonoBehaviour
         for (int i = 0; i < timerText.Length; i++)
         {
             float time = timerSaver.GetTimer(i);
+            Debug.Log(timerSaver.GetTimer(i));
             if (time == 0)
-                break;
-                Debug.Log("Past 0");
+                continue;
             int seconds = (int)time / 1000;
             int milliseconds = (int) time % 1000;
             timerText[i].text = string.Format("{0:00}:{1:000}", seconds, milliseconds);
